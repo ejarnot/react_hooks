@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
+import Tasks from "./components/OverviewClass.jsx";
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
         }}
       >
         <h1>React Hooks</h1>
+        <Tasks></Tasks>
       </main>
     );
   }
