@@ -5,11 +5,17 @@ class Tasks extends Component{
         super(props)
 
         this.state={
-            list: [{
+            list: [
+            {
                 content: "Practice React",
                 proirity: 1,
                 date: "4-11-2022",
-            }],
+            }
+        ],
+            content: "",
+            date: new Date().toISOString(),
+            priority: 0,
+
         }
     }
 

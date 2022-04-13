@@ -18,37 +18,56 @@ function Tasks(props){
         setList([
             ...this.state.list,
             {
-              
-            }
-        ])
+              content,
+              date,
+              priority,
+            },
+        ]);
+        setContent("");
+        setDate(new Date().toISOString());
+        setPriority(0);
     }
 
     return(
         <div>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                   <input 
                   type="text" 
                   name="newTask" 
                   id="newTask" 
                   placeholder="Sleep..." 
-                  value={this.state.task} 
-                  onChange={(event)=> this.setState({task: event.target.value})} 
+                  value={content} 
+                  onChange={(event)=> this.setContent(event.target.value)}
                   />
                   <input 
-                    type="date" 
+                    type="datetime-local" 
                     name="taskDate" 
                     id="taskDate" 
-                    value="{this.state.date}"
-                    onChange={(event)=> this.setState({
-                        date: event.target.value
-                    })}
+                    value={date}
+                    onChange={(event)=> setDate(event.target.value)}
                 />
+                <select 
+                  name="taskPriority"
+                  id="taskPriority"
+                  value={pirority}
+                  onChange={(event) => setPriority(event.target.value)}
+                >
+                  <option value={0}>None</option>
+                  <option value={1}>Low</option>
+                  <option value={2}>Medium</option>
+                  <option value={3}>High</option>
+
+
+                </select>
+                <button type="submit">Add Task</button>
             </form>
             <ul>
-                {this.state.list.map((task, index) => {
+                {list.map((task, index) => {
                     return <li key={`${task.date}${index}`}>{task.content}</li>;
                 })}
             </ul>
           </div>
     )
 }
+
+export default Tasks; 
